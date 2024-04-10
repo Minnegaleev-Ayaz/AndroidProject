@@ -15,7 +15,7 @@ import dagger.Component
     ]
 )
 @ScreenScope
-interface MainComponent {
+interface MainComponent: MainApi {
 
     companion object {
 

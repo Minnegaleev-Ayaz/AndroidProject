@@ -1,13 +1,11 @@
 package com.nefrit.app.di.deps
 
+import com.example.feature_auth_api.di.AuthFeatureApi
+import com.example.feature_auth_impl.di.AuthFeatureHolder
 import com.nefrit.app.App
 import com.nefrit.common.di.FeatureApiHolder
 import com.nefrit.common.di.FeatureContainer
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.common.data.db.di.DbApi
-import com.nefrit.common.data.db.di.DbHolder
-import com.nefrit.feature_user_api.di.UserFeatureApi
-import com.nefrit.users.di.UserFeatureHolder
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.ClassKey
@@ -22,13 +20,8 @@ interface ComponentHolderModule {
 
     @ApplicationScope
     @Binds
-    @ClassKey(UserFeatureApi::class)
+    @ClassKey(AuthFeatureApi::class)
     @IntoMap
-    fun provideUserFeatureHolder(userFeatureHolder: UserFeatureHolder): FeatureApiHolder
+    fun provideUserFeatureHolder(userFeatureHolder: AuthFeatureHolder): FeatureApiHolder
 
-    @ApplicationScope
-    @Binds
-    @ClassKey(DbApi::class)
-    @IntoMap
-    fun provideDbFeature(dbHolder: DbHolder): FeatureApiHolder
 }

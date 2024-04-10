@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+android {
+    namespace = "ru.itis.firebaseImpl"
+    compileSdkVersion = rootProject.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':common')
+    implementation project(':feature-auth-api')
+
+    implementation corutines_android
+    implementation corutines_core
+    implementation daggerDep
+    implementation daggerKapt
+    implementation 'com.google.firebase:firebase-auth:20.2.0'
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth-ktx:20.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    androidTestImplementation 'junit:junit:4.12'
+}

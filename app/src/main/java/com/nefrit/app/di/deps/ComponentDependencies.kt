@@ -15,6 +15,7 @@ annotation class ComponentDependenciesKey(val value: KClass<out ComponentDepende
 
 inline fun <reified T : ComponentDependencies> Activity.findComponentDependencies(): T {
     return findComponentDependenciesProvider()[T::class.java] as T
+
 }
 
 fun Activity.findComponentDependenciesProvider(): ComponentDependenciesProvider {

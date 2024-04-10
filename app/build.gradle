@@ -5,7 +5,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        applicationId "com.nefrit.example"
+        applicationId "ru.itis.ea2tracker"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode rootProject.versionCode
@@ -26,8 +26,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':common')
-    implementation project(':feature-user-api')
-    implementation project(':feature-user-impl')
+    implementation project(':feature-auth-impl')
+    implementation project(':feature-auth-api')
 
     implementation kotlinDep
 
@@ -48,4 +48,7 @@ dependencies {
     implementation retrofitDep
     implementation gsonConvertedDep
     implementation rxCallAdapterDep
+    implementation corutines_android
+    implementation corutines_core
+    implementation lifecycleScope
 }

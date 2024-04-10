@@ -1,1 +1,3 @@
-include ':app', ':test-shared', ':feature-user-impl', ':common', ':feature-user-api'
+include ':app', ':test-shared', ':common'
+include ':feature-auth-impl'
+include ':feature-auth-api'

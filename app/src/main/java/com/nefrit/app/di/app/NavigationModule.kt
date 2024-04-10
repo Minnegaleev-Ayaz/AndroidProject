@@ -1,8 +1,9 @@
 package com.nefrit.app.di.app
 
+import com.example.feature_auth_impl.UsersAuthRouter
 import com.nefrit.app.navigation.Navigator
 import com.nefrit.common.di.scope.ApplicationScope
-import com.nefrit.users.UsersRouter
+
 import dagger.Module
 import dagger.Provides
 
@@ -15,5 +16,5 @@ class NavigationModule {
 
     @ApplicationScope
     @Provides
-    fun provideMainRouter(navigator: Navigator): UsersRouter = navigator
+    fun provideMainRouter(navigator: Navigator): UsersAuthRouter = navigator
 }

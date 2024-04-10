@@ -24,7 +24,6 @@ class Toolbar @JvmOverloads constructor(
     fun showHomeButton() {
         binding.backImg.show()
     }
-
     fun hideHomeButton() {
         binding.backImg.gone()
     }

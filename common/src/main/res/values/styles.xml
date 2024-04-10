@@ -20,17 +20,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/colorPrimary</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="windowSplashScreenAnimationDuration">500</item>
-
-        <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
-
-        <item name="android:statusBarColor">@color/colorError</item>
-        <item name="android:navigationBarColor">@color/colorError</item>
-    </style>
-
     <style name="TextAppearance.Toolbar.Title" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textSize">20sp</item>

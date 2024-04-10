@@ -54,5 +54,9 @@ dependencies {
     testImplementation jUnitDep
     testImplementation mockitoDep
 
-    implementation splashScreenDep
+
+    implementation corutines_android
+    implementation corutines_core
+    implementation lifecycleScope
+    implementation lifecycleViewModelScope
 }

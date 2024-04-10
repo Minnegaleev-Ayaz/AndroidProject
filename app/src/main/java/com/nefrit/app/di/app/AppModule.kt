@@ -12,6 +12,7 @@ class AppModule {
     @ApplicationScope
     @Provides
     fun provideContext(application: App): Context {
+
         return application
     }
 }

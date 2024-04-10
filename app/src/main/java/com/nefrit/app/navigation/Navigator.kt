@@ -1,11 +1,9 @@
 package com.nefrit.app.navigation
 
 import androidx.navigation.NavController
-import com.nefrit.app.R
-import com.nefrit.users.UsersRouter
-import com.nefrit.users.presentation.details.UserFragment
+import com.example.feature_auth_impl.UsersAuthRouter
 
-class Navigator : UsersRouter {
+class Navigator : UsersAuthRouter {
 
     private var navController: NavController? = null
 
@@ -20,12 +18,12 @@ class Navigator : UsersRouter {
         }
     }
 
-    override fun openUser(userId: Int) {
-        val userBundle = UserFragment.createBundle(userId)
-        navController?.navigate(R.id.userFragment, userBundle)
+    override fun openUserAuth(userId: Int) {
+        TODO("Not yet implemented")
     }
 
-    override fun returnToUsers() {
-        navController?.popBackStack()
+    override fun returnToUsersAuth() {
+        TODO("Not yet implemented")
     }
+
 }

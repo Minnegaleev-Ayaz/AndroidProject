@@ -7,14 +7,8 @@
 
     <fragment
         android:id="@+id/usersFragment"
-        android:name="com.nefrit.users.presentation.list.UsersFragment"
+        android:name="com.example.feature_auth_impl.presentation.ui.fragment.UsersFragment"
         android:label="fragment_users"
         tools:layout="@layout/fragment_users" />
-
-    <fragment
-        android:id="@+id/userFragment"
-        android:name="com.nefrit.users.presentation.details.UserFragment"
-        android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
 
 </navigation>
