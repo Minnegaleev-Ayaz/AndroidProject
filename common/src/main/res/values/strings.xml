@@ -3,4 +3,7 @@
     <string name="common_error_general_title">Error</string>
     <string name="common_error_network">Please, check internet connection and try again later.</string>
     <string name="common_error_general_message">We are working hard to fix the problem. Please, try again later.</string>
+    <string name="predictions">Predictions</string>
+    <string name="searhing">Search</string>
+    <string name="archieve">Archieve</string>
 </resources>

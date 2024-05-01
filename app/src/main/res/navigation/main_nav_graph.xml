@@ -3,12 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/usersFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.feature_auth_impl.presentation.ui.fragment.UsersFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users" />
+        android:id="@+id/signUpFragment"
+        android:name="com.example.feature_auth_impl.presentation.ui.signUp.SignUpFragment"
+        android:label="signUpFragment"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_predictionFragment"
+            app:destination="@id/predictionFragment" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.feature_auth_impl.presentation.ui.signIn.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_predictionFragment"
+            app:destination="@id/predictionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/predictionFragment"
+        android:name="com.example.feature_predict_impl.presentation.ui.prediction.PredictionFragment"
+        android:label="PredictionFragment"
+        tools:layout="@layout/fragment_predictions"/>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.feature_splash_screen_impl.presentation.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_predictionFragment"
+            app:destination="@id/predictionFragment" />
+    </fragment>
 </navigation>

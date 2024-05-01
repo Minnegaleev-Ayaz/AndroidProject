@@ -11,6 +11,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.PluralsRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import javax.inject.Inject
 
 interface ResourceManager {
 
@@ -31,7 +32,7 @@ interface ResourceManager {
     fun getDimen(@DimenRes id: Int): Float
 }
 
-class ResourceManagerImpl(
+class ResourceManagerImpl @Inject constructor(
     private val context: Context,
 ) : ResourceManager {
 

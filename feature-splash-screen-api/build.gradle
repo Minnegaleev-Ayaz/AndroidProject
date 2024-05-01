@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+android {
+    namespace = "com.example.feature_splash_screen_api"
+    compileSdkVersion = rootProject.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':common')
+    implementation kotlinDep
+    implementation androidDep
+    implementation materialDep
+    implementation cardViewDep
+    implementation constraintDep
+    implementation rxJavaDep
+    implementation rxAndroidDep
+    implementation daggerDep
+    implementation 'androidx.test:monitor:1.6.1'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    androidTestImplementation 'junit:junit:4.12'
+    kapt daggerKapt
+    implementation roomDep
+    implementation rxRoomDep
+    kapt roomKapt
+    implementation lifecycleDep
+    kapt lifecycleKapt
+    testImplementation jUnitDep
+    testImplementation mockitoDep
+    implementation gsonConvertedDep
+    implementation gsonDep
+}

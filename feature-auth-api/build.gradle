@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    namespace = "ru.itis.firebaseApi"
+    namespace = "com.example.feature_auth_api"
     compileSdkVersion = rootProject.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion

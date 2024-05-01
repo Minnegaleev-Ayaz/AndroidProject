@@ -1,7 +1,9 @@
 package com.example.feature_auth_impl
 
 interface UsersAuthRouter {
-    fun openUserAuth(userId: Int)
+    fun openSignUpFromSignIn()
 
-    fun returnToUsersAuth()
+    fun openSignInFromSignUp()
+    fun openPredictionFromSignUp()
+    fun openPredictionFromSignIn()
 }

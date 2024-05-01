@@ -54,7 +54,7 @@ dependencies {
     testImplementation jUnitDep
     testImplementation mockitoDep
 
-
+    implementation materialDep
     implementation corutines_android
     implementation corutines_core
     implementation lifecycleScope

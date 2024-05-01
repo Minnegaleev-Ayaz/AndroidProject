@@ -28,6 +28,10 @@ dependencies {
     implementation project(':common')
     implementation project(':feature-auth-impl')
     implementation project(':feature-auth-api')
+    implementation project(':feature-predict-impl')
+    implementation project(':feature-predict-api')
+    implementation project(':feature-splash-screen-impl')
+    implementation project(':feature-splash-screen-api')
 
     implementation kotlinDep
 
@@ -51,4 +55,5 @@ dependencies {
     implementation corutines_android
     implementation corutines_core
     implementation lifecycleScope
+    implementation viewBindingDelegate
 }

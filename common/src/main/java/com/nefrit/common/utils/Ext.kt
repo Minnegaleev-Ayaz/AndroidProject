@@ -54,3 +54,18 @@ inline fun <T> Flow<T>.observe(fragment: Fragment, crossinline block: (T) -> Uni
         }
     }
 }
+sealed class AsyncResult<out T> {
+    object Loading : AsyncResult<Nothing>()
+    object Unknown : AsyncResult<Nothing>()
+    data class Success<T>(val data: T) : AsyncResult<T>()
+    data class Error(val exception: Throwable) : AsyncResult<Nothing>()
+    fun getDataOrNull(): T? = when (this) {
+        is Success -> data
+        else -> null
+    }
+
+    fun getExceptionOrNull(): Throwable? = when (this) {
+        is Error -> exception
+        else -> null
+    }
+}

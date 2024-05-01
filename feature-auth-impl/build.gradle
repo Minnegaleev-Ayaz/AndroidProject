@@ -3,11 +3,22 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 android {
-    namespace = "ru.itis.firebaseImpl"
+    namespace = "com.example.feature_auth_impl"
     compileSdkVersion = rootProject.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 }
 dependencies {
@@ -18,12 +29,21 @@ dependencies {
     implementation corutines_android
     implementation corutines_core
     implementation daggerDep
-    implementation daggerKapt
-    implementation 'com.google.firebase:firebase-auth:20.2.0'
-    implementation platform('com.google.firebase:firebase-bom:28.4.2')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-auth-ktx:20.2.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation constraintDep
+    kapt daggerKapt
+    implementation materialDep
+    implementation lifecycleViewModelScope
+    def firebaseBoMVersion = '32.8.1'
+    implementation(platform("com.google.firebase:firebase-bom:${firebaseBoMVersion}"))
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
+
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-storage:20.2.1'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation viewBindingDelegate
     androidTestImplementation 'junit:junit:4.12'
 }
