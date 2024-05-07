@@ -12,21 +12,10 @@ import java.util.concurrent.TimeUnit
 @Module
 class NetworkModule {
 
-    /*@Provides
+    @Provides
     @ApplicationScope
     fun provideNetworkProperties(appProperties: AppProperties): NetworkProperties {
         return appProperties.networkProperties()
     }
-
-    @Provides
-    @ApplicationScope
-    fun provideOkHttpClient(networkProperties: NetworkProperties): OkHttpClient {
-        return OkHttpClient.Builder()
-            .connectTimeout(networkProperties.connectTimeout, TimeUnit.SECONDS)
-            .writeTimeout(networkProperties.writeTimeout, TimeUnit.SECONDS)
-            .readTimeout(networkProperties.readTimeout, TimeUnit.SECONDS)
-            .retryOnConnectionFailure(true)
-            .build()
-    }*/
 
 }

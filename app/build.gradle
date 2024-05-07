@@ -32,6 +32,7 @@ dependencies {
     implementation project(':feature-predict-api')
     implementation project(':feature-splash-screen-impl')
     implementation project(':feature-splash-screen-api')
+    implementation project(':panda-score-api')
 
     implementation kotlinDep
 

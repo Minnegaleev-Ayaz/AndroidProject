@@ -1,5 +1,6 @@
 package com.nefrit.app.di.app
 
+import com.example.feature_predict_impl.data.di.ApiNetworkModule
 import com.nefrit.app.App
 import com.nefrit.app.di.deps.ComponentDependenciesModule
 import com.nefrit.app.di.deps.ComponentHolderModule
@@ -18,6 +19,7 @@ import dagger.Component
         AppModule::class,
         CommonModule::class,
         NetworkModule::class,
+        ApiNetworkModule::class,
         PreferencesModule::class,
         NavigationModule::class,
         ComponentHolderModule::class,
