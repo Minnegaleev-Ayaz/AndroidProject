@@ -1,6 +1,7 @@
 package com.nefrit.app.di.main
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.nefrit.common.base.BaseViewModel
 import com.nefrit.common.data.storage.PreferencesImpl
@@ -27,6 +28,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val authStatus = preferencesImpl.getAutStatus()
+                Log.e("Ayaz",authStatus.toString())
                 _sharedPreferencesFlow.emit(AsyncResult.Success(authStatus))
             } catch (e: Exception) {
                 _sharedPreferencesFlow.emit(AsyncResult.Error(e))

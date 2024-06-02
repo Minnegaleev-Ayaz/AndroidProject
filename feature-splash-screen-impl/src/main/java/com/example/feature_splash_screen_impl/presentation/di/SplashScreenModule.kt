@@ -13,20 +13,9 @@ import dagger.Provides
 import dagger.multibindings.IntoMap
 
 @Module(
-    includes = [
-        ViewModelModule::class
-    ]
 )
 class SplashScreenModule {
     @Provides
-    fun provideMainViewModel(fragment: Fragment, factory: ViewModelProvider.Factory): SplashScreenViewModel {
-        return ViewModelProvider(fragment, factory)[SplashScreenViewModel::class.java]
-    }
-
-    @Provides
-    @IntoMap
-    @ViewModelKey(SplashScreenViewModel::class)
-    fun provideRegisterViewModel(preferencesImpl: PreferencesImpl,router: SplashScreenRouter): ViewModel {
-        return SplashScreenViewModel(preferencesImpl,router)
-    }
+    @[IntoMap ViewModelKey(SplashScreenViewModel::class)]
+    fun provideWeatherInfoViewModel(viewModel:SplashScreenViewModel): ViewModel = viewModel
 }

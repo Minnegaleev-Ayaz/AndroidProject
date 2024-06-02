@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 android {
     namespace = "com.example.feature_search_impl"
     compileSdkVersion = rootProject.compileSdkVersion
@@ -8,7 +9,6 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "PANDAS_SCORE_BASE_URL", "\"https://api.pandascore.co/\"")
     }
     buildTypes {
         release {
@@ -25,6 +25,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':common')
     implementation project(':feature-search-api')
+    implementation project(':room-api')
+    implementation project(':panda-score-api')
     implementation corutines_android
     implementation corutines_core
     implementation daggerDep
@@ -39,4 +41,8 @@ dependencies {
     implementation gsonConvertedDep
     implementation glideDep
     implementation corutineAdapter
+    implementation lifecycleScope
+    implementation fragmentImpl
+    implementation viewPager
+    implementation roomDep
 }

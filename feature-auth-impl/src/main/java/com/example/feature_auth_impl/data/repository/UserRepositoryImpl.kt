@@ -38,7 +38,7 @@ class UserRepositoryImpl @Inject constructor(
                     user?.updateProfile(profileUpdates)
                         ?.addOnCompleteListener { updateTask ->
                             if (updateTask.isSuccessful) {
-                                continuation.resume(AuthUser(user?.email ?: "", user?.displayName ?: ""))
+                                continuation.resume(AuthUser(user?.uid?:"",user?.email ?: "", user?.displayName ?: ""))
                             } else {
                                 continuation.resumeWithException(Exception("Error updating user profile: ${updateTask.exception?.message}"))
                             }
@@ -51,7 +51,7 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun signInwithEmailAndPassword(email: String, password: String): AuthUser {
+    override suspend fun signInWithEmailAndPassword(email: String, password: String): AuthUser {
         val signInTask = auth.signInWithEmailAndPassword(email, password)
 
         return suspendCoroutine { continuation ->
@@ -61,7 +61,7 @@ class UserRepositoryImpl @Inject constructor(
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(user?.displayName)
                         .build()
-                    continuation.resume(AuthUser(user?.email ?: "", user?.displayName ?: ""))
+                    continuation.resume(AuthUser(user?.uid?:"",user?.email ?: "", user?.displayName ?: ""))
                 } else {
                     continuation.resumeWithException(Exception("Error signing in: ${task.exception?.message}"))
                 }

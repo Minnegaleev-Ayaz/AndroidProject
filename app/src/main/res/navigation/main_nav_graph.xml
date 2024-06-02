@@ -32,9 +32,10 @@
     </fragment>
     <fragment
         android:id="@+id/predictionFragment"
-        android:name="com.example.feature_predict_impl.presentation.ui.prediction.PredictionFragment"
+        android:name="com.example.feature_predict_impl.presentation.ui.prediction.prediction.PredictionFragment"
         android:label="PredictionFragment"
-        tools:layout="@layout/fragment_predictions"/>
+        tools:layout="@layout/fragment_predictions">
+    </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
         android:name="com.example.feature_splash_screen_impl.presentation.SplashScreenFragment"
@@ -47,4 +48,68 @@
             android:id="@+id/action_splashScreenFragment_to_predictionFragment"
             app:destination="@id/predictionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.feature_schedule_impl.presentation.view_pager.ViewPagerFragment"
+        android:label="ViewPagerFragment"
+        tools:layout="@layout/fragment_view_pager"
+        >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_streamsBottomSheetDialogFragment"
+            app:destination="@id/streamsBottomSheetDialogFragment" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_upcomingBottomSheetDialogFragment"
+            app:destination="@id/upcomingBottomSheetDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.feature_search_impl.presentation.ui.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_teamFragment"
+            app:destination="@id/teamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.example.feature_search_impl.presentation.ui.player.PlayerFragment"
+        android:label="PlayerFragment" />
+    <fragment
+        android:id="@+id/playerFromTeamFragment"
+        android:name="com.example.feature_search_impl.presentation.ui.player.PlayerFromTeamFragment"
+        android:label="PlayerFromTeamFragment" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.feature_search_impl.presentation.ui.team.TeamFragment"
+        android:label="TeamFragment" >
+        <action
+            android:id="@+id/action_teamFragment_to_playerFromTeamFragment"
+            app:destination="@id/playerFromTeamFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.example.feature_schedule_impl.presentation.ui.schedule.ScheduleFragment"
+        android:label="ScheduleFragment" >
+        <action
+            android:id="@+id/action_scheduleFragment_to_streamsBottomSheetDialogFragment"
+            app:destination="@id/streamsBottomSheetDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/streamsBottomSheetDialogFragment"
+        android:name="com.example.feature_schedule_impl.presentation.ui.assistents.streams.StreamsBottomSheetDialogFragment"
+        android:label="StreamsBottomSheetDialogFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.feature_profile_impl.presentation.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/upcomingBottomSheetDialogFragment"
+        android:name="com.example.feature_schedule_impl.presentation.ui.assistents.upcoming_logic.UpcomingBottomSheetDialogFragment"
+        android:label="UpcomingBottomSheetDialogFragment" />
 </navigation>

@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 @Module
-class ApiNetworkModule {
+class PredictNetworkModule {
     @Provides
     @ApplicationScope
     fun providePandasScoreApi(okHttpClient: OkHttpClient): PandasScoreApi {

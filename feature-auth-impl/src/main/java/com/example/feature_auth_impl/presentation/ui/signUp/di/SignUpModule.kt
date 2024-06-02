@@ -14,22 +14,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 
-@Module(
-    includes = [
-        ViewModelModule::class
-    ]
-)
+@Module()
 class SignUpModule {
-
     @Provides
-    fun provideMainViewModel(fragment: Fragment, factory: ViewModelProvider.Factory): SignUpViewModel {
-        return ViewModelProvider(fragment, factory)[SignUpViewModel::class.java]
-    }
-
-    @Provides
-    @IntoMap
-    @ViewModelKey(SignUpViewModel::class)
-    fun provideRegisterViewModel(useCase: SignUpUseCase,router: UsersAuthRouter,preferencesImpl: PreferencesImpl): ViewModel {
-        return SignUpViewModel(useCase,router,preferencesImpl)
-    }
+    @[IntoMap ViewModelKey(SignUpViewModel::class)]
+    fun provideWeatherInfoViewModel(viewModel:SignUpViewModel): ViewModel = viewModel
 }

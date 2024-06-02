@@ -1,6 +1,6 @@
 package com.example.feature_predict_impl.data.mapper
 
-import com.example.feature_predict_api.domain.model.UpcomingMatchesDataModel
+import com.example.feature_predict_api.domain.model.UpcomingMatchesPredictDataModel
 import com.example.feature_predict_api.domain.model.helper_models.OpponentData
 import com.example.feature_predict_api.domain.model.helper_models.TournamentData
 import com.example.feature_predict_impl.data.mapper.helper_models.OpponentDomain
@@ -9,14 +9,14 @@ import com.example.feature_predict_impl.domain.model.helper_models.TournamentDom
 import javax.inject.Inject
 
 class FromDataToDomainMapper @Inject constructor() {
-    fun mapDataToDomain(upcomingMatchesDataModel: UpcomingMatchesDataModel): UpcomingMatchesDomainModel? {
+    fun mapDataToDomain(upcomingMatchesDataModel: UpcomingMatchesPredictDataModel): UpcomingMatchesDomainModel? {
         if (upcomingMatchesDataModel.opponents.size==2 ){
             return UpcomingMatchesDomainModel(
                 beginAt = upcomingMatchesDataModel.beginAt,
                 id = upcomingMatchesDataModel.id,
                 matchType = upcomingMatchesDataModel.matchType,
                 modifiedAt = upcomingMatchesDataModel.modifiedAt,
-                numberOfGames = upcomingMatchesDataModel.numberOfGames,
+                numberOfGames = upcomingMatchesDataModel.games?.size,
                 firstTeam = mapOpponentDataToOpponentDomain(upcomingMatchesDataModel.opponents.get(0)),
                 secondTeam = mapOpponentDataToOpponentDomain(upcomingMatchesDataModel.opponents.get(1)),
                 serieName = upcomingMatchesDataModel.serie?.fullName,

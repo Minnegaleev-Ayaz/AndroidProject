@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+android {
+    namespace = "com.example.feature_profile_impl"
+    compileSdkVersion = rootProject.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':common')
+    implementation project(':feature-profile-api')
+    implementation corutines_android
+    implementation corutines_core
+    implementation daggerDep
+    implementation constraintDep
+    kapt daggerKapt
+    implementation materialDep
+    implementation lifecycleViewModelScope
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation viewBindingDelegate
+    androidTestImplementation 'junit:junit:4.12'
+    implementation("com.google.firebase:firebase-auth")
+    implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-storage:20.2.1'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
+    implementation retrofitDep
+    implementation gsonConvertedDep
+    implementation glideDep
+    implementation corutineAdapter
+    implementation lifecycleScope
+    implementation fragmentImpl
+    implementation viewPager
+    implementation materialDep
+}

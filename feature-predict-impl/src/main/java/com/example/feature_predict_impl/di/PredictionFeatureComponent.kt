@@ -1,9 +1,14 @@
 package com.example.feature_predict_impl.di
 
+import android.app.Activity
+import androidx.activity.ComponentActivity
 import com.example.feature_predict_api.di.PredictFeatureApi
 import com.example.feature_predict_impl.PredictionFeatureRouter
-import com.example.feature_predict_impl.presentation.ui.prediction.di.PredictComponent
+import com.example.feature_predict_impl.presentation.ui.prediction.last_matches_statistic.di.StatisticComponent
+import com.example.feature_predict_impl.presentation.ui.prediction.prediction.di.PredictComponent
+import com.example.panda_score_api.remote.ExceptionHandlerDelegate
 import com.example.panda_score_api.remote.PandasScoreApi
+import com.nefrit.common.base.BaseActivity
 import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.scope.FeatureScope
 import dagger.BindsInstance
@@ -16,11 +21,14 @@ import dagger.Component
 )
 interface PredictionFeatureComponent : PredictFeatureApi {
     fun predictionComponentFactory(): PredictComponent.Factory
+    fun statisticComponentFactory(): StatisticComponent.Factory
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-         fun api(pandasScoreApi: PandasScoreApi):Builder
+        fun api(pandasScoreApi: PandasScoreApi): Builder
+        @BindsInstance
+        fun exceptionHandlerDelegate(exceptionHandlerDelegate: ExceptionHandlerDelegate):Builder
         @BindsInstance
         fun router(predictionFeatureRouter: PredictionFeatureRouter): Builder
         fun withDependencies(deps: PredictionFeatureDependencies): Builder

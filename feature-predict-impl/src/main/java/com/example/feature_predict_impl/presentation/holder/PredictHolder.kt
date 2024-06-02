@@ -12,13 +12,17 @@ class PredictHolder(
     private val onStatisticClicked: ((Int) -> Unit)? = null,
     private val onScoreClickes: ((Int) -> Boolean)? = null
 ) : RecyclerView.ViewHolder(viewBinding.root) {
+    init{
+        viewBinding.statsBtn.setOnClickListener {
+            onStatisticClicked?.invoke(adapterPosition)
+        }
+    }
     fun bindItem(matchPresentationModel: MatchPresentationModel) {
         with(viewBinding) {
             firstTeamNameTv.text = matchPresentationModel.firstTeamName
             secondTeamNameTv.text = matchPresentationModel.secondTeamName
-            matchTypeTv.text = matchPresentationModel.matchType
             titleTv.text = matchPresentationModel.matchTime
-            matchTypeTv.text = matchPresentationModel.matchType
+            matchTypeTv.text = "bestOf "+matchPresentationModel.matchType
             leagueTv.text = matchPresentationModel.leagueName
             matchPresentationModel.firstTeamImage?.let {
                 glide

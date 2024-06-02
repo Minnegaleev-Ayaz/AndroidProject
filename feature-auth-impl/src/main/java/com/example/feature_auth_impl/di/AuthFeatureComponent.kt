@@ -5,6 +5,7 @@ import com.example.feature_auth_api.di.AuthFeatureApi
 import com.example.feature_auth_impl.UsersAuthRouter
 import com.example.feature_auth_impl.presentation.ui.signIn.di.SignInComponent
 import com.example.feature_auth_impl.presentation.ui.signUp.di.SignUpComponent
+import com.google.firebase.auth.FirebaseAuth
 import com.nefrit.common.di.CommonApi
 import com.nefrit.common.di.modules.PreferencesModule
 import com.nefrit.common.di.scope.FeatureScope
@@ -30,7 +31,9 @@ interface AuthFeatureComponent : AuthFeatureApi {
 
         @BindsInstance
         fun router(usersAuthRouter: UsersAuthRouter): Builder
-        fun withDependencies(deps: AuthFeatureDependencies): Builder
+        @BindsInstance
+        fun firebaseAuth(firebaseAuth: FirebaseAuth):Builder
+        fun withDependencies(dependencies: AuthFeatureDependencies): Builder
         fun build(): AuthFeatureComponent
     }
 

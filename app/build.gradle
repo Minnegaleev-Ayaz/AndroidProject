@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-
 android {
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
@@ -32,8 +31,15 @@ dependencies {
     implementation project(':feature-predict-api')
     implementation project(':feature-splash-screen-impl')
     implementation project(':feature-splash-screen-api')
+    implementation project(':feature-schedule-impl')
+    implementation project(':feature-schedule-api')
+    implementation project(':feature-search-impl')
+    implementation project(':feature-search-api')
+    implementation project(':feature-profile-impl')
+    implementation project(':feature-profile-api')
     implementation project(':panda-score-api')
-
+    implementation project(':firebase-api')
+    implementation project(path: ':room-api')
     implementation kotlinDep
 
     implementation androidDep
@@ -45,6 +51,7 @@ dependencies {
     implementation roomDep
 
     implementation daggerDep
+
     kapt daggerKapt
 
     implementation lifecycleDep
@@ -57,4 +64,8 @@ dependencies {
     implementation corutines_core
     implementation lifecycleScope
     implementation viewBindingDelegate
+    implementation activityImpl
+    implementation platform(firebaseBom)
+    implementation firebaseAuthKtx
+    implementation firebaseAuth
 }

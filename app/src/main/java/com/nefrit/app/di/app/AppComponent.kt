@@ -1,6 +1,9 @@
 package com.nefrit.app.di.app
 
-import com.example.feature_predict_impl.data.di.ApiNetworkModule
+import androidx.room.RoomDatabase
+import com.example.feature_predict_impl.data.di.PredictNetworkModule
+import com.example.firebase_api.di.FirebaseModule
+import com.example.room_api.RoomDatabaseModule
 import com.nefrit.app.App
 import com.nefrit.app.di.deps.ComponentDependenciesModule
 import com.nefrit.app.di.deps.ComponentHolderModule
@@ -19,12 +22,14 @@ import dagger.Component
         AppModule::class,
         CommonModule::class,
         NetworkModule::class,
-        ApiNetworkModule::class,
+        PredictNetworkModule::class,
         PreferencesModule::class,
         NavigationModule::class,
         ComponentHolderModule::class,
         ComponentDependenciesModule::class,
-        FeatureManagerModule::class
+        FeatureManagerModule::class,
+        FirebaseModule::class,
+        RoomDatabaseModule::class,
     ],
     dependencies = []
 )

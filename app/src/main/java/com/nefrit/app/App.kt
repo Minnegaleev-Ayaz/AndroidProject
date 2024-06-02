@@ -1,6 +1,7 @@
 package com.nefrit.app
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.nefrit.app.di.app.AppComponent
 import com.nefrit.app.di.deps.ComponentDependenciesProvider
 import com.nefrit.app.di.deps.FeatureHolderManager
@@ -18,7 +19,7 @@ open class App : Application(), FeatureContainer {
 
     override fun onCreate() {
         super.onCreate()
-
+        FirebaseApp.initializeApp(this);
         appComponent = AppComponent.init(this)
         appComponent.inject(this)
     }

@@ -5,5 +5,15 @@
     <string name="common_error_general_message">We are working hard to fix the problem. Please, try again later.</string>
     <string name="predictions">Predictions</string>
     <string name="searhing">Search</string>
-    <string name="archieve">Archieve</string>
+    <string name="schedule">Schedule</string>
+    <string name="profile">Profile</string>
+    <string name="teams">Teams</string>
+    <string name="players">Players</string>
+    <string name="res_empty">Nothing was found</string>
+    <string name="first_last_name">%1$s %2$s</string>
+    <string name="location">Location</string>
+    <string name="age">Age</string>
+    <string name="no_streams">There are no streams at the moment</string>
+    <string name="notification">Поставить уведомление на матч</string>
+    <string name="make_predict">Перейти к матчу</string>
 </resources>

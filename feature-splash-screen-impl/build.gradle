@@ -34,4 +34,6 @@ dependencies {
     implementation viewBindingDelegate
     androidTestImplementation 'junit:junit:4.12'
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation fragmentImpl
+    implementation lifecycleScope
 }

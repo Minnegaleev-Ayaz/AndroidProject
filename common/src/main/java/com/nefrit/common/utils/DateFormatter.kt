@@ -1,25 +1,25 @@
 package com.nefrit.common.utils
 
+import android.util.Log
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.OffsetTime
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
 class DateFormatter {
 
-    private val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-    private val simpleDateTimeFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-    private val ddMMMyyyyDateFormatter = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-    private val simpleTimeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
+    val outputFormatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy", Locale.getDefault())
 
-    fun formatDate(date: Date): String {
-        return simpleDateFormat.format(date)
-    }
-
-    fun formatDateTime(date: Date): String {
-        return simpleDateTimeFormat.format(date)
-    }
-
-    fun formatTime(date: Date): String {
-        return simpleTimeFormat.format(date)
+    fun formatDate(date: String): String {
+        val dates = LocalDateTime.parse(date,formatter).plusHours(3)
+        Log.e("Ayaz",dates.toString())
+        return   dates.format(outputFormatter)
     }
 }

@@ -1,13 +1,28 @@
 package com.nefrit.app.navigation
 
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.example.feature_auth_impl.UsersAuthRouter
 import com.example.feature_predict_impl.PredictionFeatureRouter
+import com.example.feature_profile_impl.ProfileFeatureRouter
+import com.example.feature_schedule_impl.ScheduleFeatureRouter
+import com.example.feature_schedule_impl.presentation.model.running.RunningMatchUiModel
+import com.example.feature_schedule_impl.presentation.model.upcoming.UpcomingMatchUiModel
+import com.example.feature_schedule_impl.presentation.ui.assistents.streams.StreamsBottomSheetDialogFragment
+import com.example.feature_schedule_impl.presentation.ui.assistents.upcoming_logic.UpcomingBottomSheetDialogFragment
+import com.example.feature_search_impl.SearchFeatureRouter
+import com.example.feature_search_impl.presentation.model.player.PlayerUiModel
+import com.example.feature_search_impl.presentation.model.team.PlayerUi
+import com.example.feature_search_impl.presentation.model.team.TeamUiModel
+import com.example.feature_search_impl.presentation.ui.player.PlayerFragment
+import com.example.feature_search_impl.presentation.ui.player.PlayerFromTeamFragment
+import com.example.feature_search_impl.presentation.ui.team.TeamFragment
 import com.example.feature_splash_screen_impl.SplashScreenRouter
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nefrit.app.R
 
-class Navigator : UsersAuthRouter,PredictionFeatureRouter,SplashScreenRouter {
+class Navigator : UsersAuthRouter, PredictionFeatureRouter, SplashScreenRouter,
+    ScheduleFeatureRouter,
+    SearchFeatureRouter,ProfileFeatureRouter{
 
     private var navController: NavController? = null
 
@@ -21,6 +36,7 @@ class Navigator : UsersAuthRouter,PredictionFeatureRouter,SplashScreenRouter {
             this.navController = null
         }
     }
+
     override fun openSignUpFromSignIn() {
         navController?.navigate(R.id.action_signInFragment_to_signUpFragment)
     }
@@ -32,6 +48,7 @@ class Navigator : UsersAuthRouter,PredictionFeatureRouter,SplashScreenRouter {
     override fun openPredictionFromSignIn() {
         navController?.navigate(R.id.action_signInFragment_to_predictionFragment)
     }
+
     override fun openPredictionFromSignUp() {
         navController?.navigate(R.id.action_signUpFragment_to_predictionFragment)
     }
@@ -43,5 +60,36 @@ class Navigator : UsersAuthRouter,PredictionFeatureRouter,SplashScreenRouter {
     override fun openPredictionFromSplashScreen() {
         navController?.navigate(R.id.action_splashScreenFragment_to_predictionFragment)
     }
+
+    override fun openPlayerFromSearch(model:PlayerUiModel) {
+
+        navController?.navigate(R.id.action_searchFragment_to_playerFragment, bundleOf(
+            PlayerFragment.DETAILDED_PLAYER_KEY to model))
+    }
+
+    override fun openTeamFromSearch(model: TeamUiModel) {
+        navController?.navigate(R.id.action_searchFragment_to_teamFragment, bundleOf(TeamFragment.DETAILDED_TEAM_KEY to model))
+    }
+
+    override fun openPlayerFromTeam(model: PlayerUi) {
+        navController?.navigate(R.id.action_teamFragment_to_playerFromTeamFragment, bundleOf(PlayerFromTeamFragment.DETAILDED_PLAYER_FROM_TEAM_KEY to model))
+    }
+
+    override fun openStreamsFromRunning(model: RunningMatchUiModel) {
+        navController?.navigate(R.id.action_viewPagerFragment_to_streamsBottomSheetDialogFragment,
+            bundleOf(StreamsBottomSheetDialogFragment.STREAMS_TAG to model)
+        )
+    }
+
+    override fun openUpcomingBottom(model: UpcomingMatchUiModel) {
+        navController?.navigate(R.id.action_viewPagerFragment_to_upcomingBottomSheetDialogFragment,
+            bundleOf(UpcomingBottomSheetDialogFragment.UPCOMING_BOTTOM_TAG to model)
+            )
+    }
+
+    override fun openSignInFromProfile() {
+        navController?.navigate(R.id.action_profileFragment_to_signInFragment)
+    }
+
 
 }

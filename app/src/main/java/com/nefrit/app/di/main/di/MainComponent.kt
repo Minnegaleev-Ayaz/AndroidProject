@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.nefrit.app.di.main.MainActivity
 import com.nefrit.app.di.main.di.DaggerMainComponent
 import com.nefrit.common.di.scope.ScreenScope
+import com.nefrit.common.di.viewmodel.ViewModelModule
 import dagger.BindsInstance
 import dagger.Component
 
 @Component(
     dependencies = [
-        MainDependencies::class
+        MainDependencies::class,
+
     ],
     modules = [
-        MainModule::class
+        MainModule::class,
     ]
 )
 @ScreenScope
@@ -22,7 +24,7 @@ interface MainComponent : MainApi {
     companion object {
 
         fun init(activity: AppCompatActivity, deps: MainDependencies): MainComponent {
-            return DaggerMainComponent.factory().create(activity,activity, deps)
+            return DaggerMainComponent.factory().create(activity, activity, deps)
         }
     }
 

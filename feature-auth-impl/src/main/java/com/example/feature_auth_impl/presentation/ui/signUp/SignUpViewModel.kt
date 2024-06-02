@@ -16,7 +16,7 @@ import java.lang.IllegalArgumentException
 import java.net.PasswordAuthentication
 import javax.inject.Inject
 
-class SignUpViewModel(
+class SignUpViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase,
     private val router:UsersAuthRouter,
     private val preferencesImpl: PreferencesImpl,
@@ -51,6 +51,9 @@ class SignUpViewModel(
     }
     fun initializeUser(){
         preferencesImpl.saveAuthStatus(true)
+    }
+    fun saveUser(id:String){
+        preferencesImpl.saveUserId(id)
     }
 
 }

@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
 android {
     namespace = "com.example.feature_auth_impl"
     compileSdkVersion = rootProject.compileSdkVersion
@@ -25,7 +24,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':common')
     implementation project(':feature-auth-api')
-
     implementation corutines_android
     implementation corutines_core
     implementation daggerDep
@@ -33,17 +31,12 @@ dependencies {
     kapt daggerKapt
     implementation materialDep
     implementation lifecycleViewModelScope
-    def firebaseBoMVersion = '32.8.1'
-    implementation(platform("com.google.firebase:firebase-bom:${firebaseBoMVersion}"))
     implementation("com.google.firebase:firebase-auth")
-
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
-    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
-
     implementation 'com.google.firebase:firebase-core:21.1.1'
-    implementation 'com.google.firebase:firebase-storage:20.2.1'
-    implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
     implementation viewBindingDelegate
     androidTestImplementation 'junit:junit:4.12'
+    implementation lifecycleScope
+    implementation fragmentImpl
 }

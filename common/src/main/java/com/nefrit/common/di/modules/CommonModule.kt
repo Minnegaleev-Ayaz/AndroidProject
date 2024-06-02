@@ -34,15 +34,18 @@ class CommonModule {
     }
 
     @Provides
+    @ApplicationScope
     fun provideDateFormatter(): DateFormatter {
         return DateFormatter()
     }
 
     @Provides
+    @ApplicationScope
     fun provideNotificationWrapper(
         context: Context,
-        notificationManager: NotificationManager
     ): NotificationManagerWrapper {
+         val notificationManager: NotificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         return NotificationManagerWrapperImpl(context, notificationManager)
     }
 

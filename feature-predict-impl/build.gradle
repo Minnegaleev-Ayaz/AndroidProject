@@ -40,4 +40,8 @@ dependencies {
     implementation gsonConvertedDep
     implementation glideDep
     implementation corutineAdapter
+    implementation lifecycleScope
+    implementation fragmentImpl
+    implementation viewPager
+    implementation materialDep
 }

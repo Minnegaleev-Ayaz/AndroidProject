@@ -14,7 +14,7 @@ import com.nefrit.common.R
 
 interface NotificationManagerWrapper {
 
-    fun notify(simpleNotification: SimpleNotification)
+    fun notify(simpleNotification: SimpleNotification, delta: Long)
 
     class SimpleNotification(
         val id: Int = 1,
@@ -55,12 +55,15 @@ class NotificationManagerWrapperImpl(
         notificationManager.createNotificationChannels(channels)
     }
 
-    override fun notify(simpleNotification: NotificationManagerWrapper.SimpleNotification) {
-        val notification = mapSimpleNotification(simpleNotification)
+    override fun notify(
+        simpleNotification: NotificationManagerWrapper.SimpleNotification,
+        delta: Long
+    ) {
+        val notification = mapSimpleNotification(simpleNotification,delta)
         notificationManager.notify(simpleNotification.id, notification)
     }
 
-    private fun mapSimpleNotification(simpleNotification: NotificationManagerWrapper.SimpleNotification): Notification {
+    private fun mapSimpleNotification(simpleNotification: NotificationManagerWrapper.SimpleNotification,delta:Long): Notification {
         val style = NotificationCompat.BigTextStyle().bigText(simpleNotification.text)
         val pendingIntent = PendingIntent.getActivity(context, simpleNotification.id, simpleNotification.intent, PendingIntent.FLAG_IMMUTABLE)
 
@@ -72,6 +75,7 @@ class NotificationManagerWrapperImpl(
             .setContentText(simpleNotification.text)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
+            .setWhen(System.currentTimeMillis()+delta*60000)
             .build()
     }
 }

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/signUpFragment"
+        android:id="@+id/predictionFragment"
         android:icon="@drawable/predictions_icon"
         android:title="@string/predictions" />
     <item
-        android:id="@+id/signInFragment"
+        android:id="@+id/viewPagerFragment"
         android:icon="@drawable/archieve_icon"
-        android:title="@string/archieve" />
+        android:title="@string/schedule" />
     <item
-        android:id="@+id/predictionFragment"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/search_icon"
+        android:title="@string/searhing" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/user_icon"
         android:title="@string/searhing" />
 </menu>

@@ -17,7 +17,7 @@ class SignInUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(signInForm: SignInForm): UserUiModel {
         return withContext(Dispatchers.IO) {
-            val userData = repository.signInwithEmailAndPassword(
+            val userData = repository.signInWithEmailAndPassword(
                 email = signInForm.email,
                 password = signInForm.password,
             )

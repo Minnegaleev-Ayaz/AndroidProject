@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1042927130163",
+    "project_id": "cstracker-462d9",
+    "storage_bucket": "cstracker-462d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042927130163:android:4da43618d95f441993f546",
+        "android_client_info": {
+          "package_name": "com.example.firebase_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWWbBd9J1mqIDNIhNw-eu23pp-HkGG4fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

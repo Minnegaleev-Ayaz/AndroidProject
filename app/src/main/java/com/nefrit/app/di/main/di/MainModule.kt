@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.nefrit.app.di.main.MainViewModel
 import com.nefrit.common.data.storage.PreferencesImpl
+import com.nefrit.common.di.viewmodel.ViewModelActivityModule
 import com.nefrit.common.di.viewmodel.ViewModelKey
 import com.nefrit.common.di.viewmodel.ViewModelModule
 import dagger.Module
@@ -14,7 +15,7 @@ import dagger.multibindings.IntoMap
 
 @Module(
     includes = [
-        ViewModelModule::class
+        ViewModelActivityModule::class
     ]
 )
 class MainModule {

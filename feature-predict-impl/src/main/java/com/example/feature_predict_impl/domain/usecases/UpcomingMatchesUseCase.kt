@@ -3,6 +3,7 @@ package com.example.feature_predict_impl.domain.usecases
 import com.example.feature_predict_api.domain.repository.PredictionRepository
 import com.example.feature_predict_impl.data.mapper.FromDataToDomainMapper
 import com.example.feature_predict_impl.domain.mapper.FromDomainToPresentationMapper
+import com.example.feature_predict_impl.domain.model.UpcomingMatchesDomainModel
 import com.example.feature_predict_impl.presentation.model.MatchPresentationModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -15,9 +16,9 @@ class UpcomingMatchesUseCase @Inject constructor(
     private val repository: PredictionRepository,
     private val corutineDispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(): List<MatchPresentationModel> {
+    suspend operator fun invoke(): List<UpcomingMatchesDomainModel> {
         return withContext(corutineDispatcher) {
-            repository.getUpcomingMatches().map { domainMapper.mapDomainToPresentation(dataMapper.mapDataToDomain(it))}.filterNotNull()
+            repository.getUpcomingMatches().map { dataMapper.mapDataToDomain(it)}.filterNotNull()
         }
     }
 }

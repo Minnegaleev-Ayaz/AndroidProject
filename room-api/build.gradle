@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+android {
+    namespace = "com.example.room_api"
+    compileSdkVersion = rootProject.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "PANDAS_SCORE_BASE_URL", "\"https://api.pandascore.co/\"")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':common')
+    implementation corutines_android
+    implementation corutines_core
+    implementation daggerDep
+    implementation constraintDep
+    kapt daggerKapt
+    implementation materialDep
+    implementation lifecycleViewModelScope
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation viewBindingDelegate
+    androidTestImplementation 'junit:junit:4.12'
+    implementation glideDep
+    implementation corutineAdapter
+    implementation roomDep
+    kapt roomKapt
+}

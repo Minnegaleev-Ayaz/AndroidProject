@@ -4,6 +4,12 @@ import com.example.feature_auth_api.di.AuthFeatureApi
 import com.example.feature_auth_impl.di.AuthFeatureHolder
 import com.example.feature_predict_api.di.PredictFeatureApi
 import com.example.feature_predict_impl.di.PredictionFeatureHolder
+import com.example.feature_profile_api.di.ProfileFeatureApi
+import com.example.feature_profile_impl.di.ProfileFeatureHolder
+import com.example.feature_schedule_api.di.ScheduleFeatureApi
+import com.example.feature_schedule_impl.di.ScheduleFeatureHolder
+import com.example.feature_search_api.di.SearchFeatureApi
+import com.example.feature_search_impl.di.SearchFeatureHolder
 import com.example.feature_splash_screen_api.di.SplashScreenApi
 import com.example.feature_splash_screen_impl.di.SplashScreenFeatureHolder
 import com.nefrit.app.App
@@ -37,4 +43,19 @@ interface ComponentHolderModule {
     @ClassKey(SplashScreenApi::class)
     @IntoMap
     fun provideSplashScreenFeatureHolder(splashScreenFeatureHolder: SplashScreenFeatureHolder):FeatureApiHolder
+    @ApplicationScope
+    @Binds
+    @ClassKey(ScheduleFeatureApi::class)
+    @IntoMap
+    fun provideScheduleFeatureHolder(scheduleFeatureHolder: ScheduleFeatureHolder): FeatureApiHolder
+    @ApplicationScope
+    @Binds
+    @ClassKey(SearchFeatureApi::class)
+    @IntoMap
+    fun provideSearchFeatureHolder(searchFeatureHolder: SearchFeatureHolder): FeatureApiHolder
+    @ApplicationScope
+    @Binds
+    @ClassKey(ProfileFeatureApi::class)
+    @IntoMap
+    fun provideProfileFeatureHolder(profileFeatureHolder: ProfileFeatureHolder): FeatureApiHolder
 }

@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class SignInViewModel(
+class SignInViewModel @Inject constructor(
     private val signInUseCase: SignInUseCase,
     private val router:UsersAuthRouter,
      val preferencesImpl: PreferencesImpl,
@@ -43,5 +43,8 @@ class SignInViewModel(
     }
     fun initializeUser(){
         preferencesImpl.saveAuthStatus(true)
+    }
+    fun saveUser(id:String){
+        preferencesImpl.saveUserId(id)
     }
 }
