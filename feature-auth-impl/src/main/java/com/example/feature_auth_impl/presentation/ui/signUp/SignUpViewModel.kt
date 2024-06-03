@@ -38,7 +38,7 @@ class SignUpViewModel @Inject constructor(
                     )
                 )
                 _signUpFlow.emit(AsyncResult.Success(result))
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 _signUpFlow.emit(AsyncResult.Error(e))
             }
         }

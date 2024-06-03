@@ -35,6 +35,9 @@
         android:name="com.example.feature_predict_impl.presentation.ui.prediction.prediction.PredictionFragment"
         android:label="PredictionFragment"
         tools:layout="@layout/fragment_predictions">
+        <action
+            android:id="@+id/action_predictionFragment_to_predictionBottomSheetDialogFragment"
+            app:destination="@id/predictionBottomSheetDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -111,5 +114,13 @@
     <dialog
         android:id="@+id/upcomingBottomSheetDialogFragment"
         android:name="com.example.feature_schedule_impl.presentation.ui.assistents.upcoming_logic.UpcomingBottomSheetDialogFragment"
-        android:label="UpcomingBottomSheetDialogFragment" />
+        android:label="UpcomingBottomSheetDialogFragment" >
+        <action
+            android:id="@+id/action_upcomingBottomSheetDialogFragment_to_predictionBottomSheetDialogFragment"
+            app:destination="@id/predictionBottomSheetDialogFragment" />
+    </dialog>
+    <dialog
+        android:id="@+id/predictionBottomSheetDialogFragment"
+        android:name="com.example.feature_predict_impl.presentation.ui.prediction.bottom.PredictionBottomSheetDialogFragment"
+        android:label="PredictionBottomSheetDialogFragment" />
 </navigation>

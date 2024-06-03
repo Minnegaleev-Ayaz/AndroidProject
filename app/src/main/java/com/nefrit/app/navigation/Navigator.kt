@@ -4,6 +4,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.example.feature_auth_impl.UsersAuthRouter
 import com.example.feature_predict_impl.PredictionFeatureRouter
+import com.example.feature_predict_impl.presentation.model.MatchPresentationModel
+import com.example.feature_predict_impl.presentation.ui.prediction.bottom.PredictionBottomSheetDialogFragment
 import com.example.feature_profile_impl.ProfileFeatureRouter
 import com.example.feature_schedule_impl.ScheduleFeatureRouter
 import com.example.feature_schedule_impl.presentation.model.running.RunningMatchUiModel
@@ -91,5 +93,26 @@ class Navigator : UsersAuthRouter, PredictionFeatureRouter, SplashScreenRouter,
         navController?.navigate(R.id.action_profileFragment_to_signInFragment)
     }
 
+    override fun openBottomFromMain(match: MatchPresentationModel) {
+        navController?.navigate(R.id.action_predictionFragment_to_predictionBottomSheetDialogFragment, bundleOf(
+            PredictionBottomSheetDialogFragment.PREDICT_BOTTOM_TAG to match
+        ))
+    }
 
+    override fun openPredFromUpcoming(model: UpcomingMatchUiModel) {
+        navController?.navigate(R.id.action_upcomingBottomSheetDialogFragment_to_predictionBottomSheetDialogFragment,
+            bundleOf(PredictionBottomSheetDialogFragment.PREDICT_BOTTOM_TAG to MatchPresentationModel(
+                id = model.id,
+                firstTeamImage = model.firstTeamImage,
+                firstTeamName = model.firstTeamName,
+                firstTeamId = model.firstTeamId,
+                secondTeamName = model.secondTeamName,
+                secondTeamImage = model.secondTeamImage,
+                secondTeamId = model.firstTeamId,
+                matchTime = model.matchTime,
+                matchType = model.matchType?.toInt(),
+                leagueName = model.leagueName
+            ))
+        )
+    }
 }

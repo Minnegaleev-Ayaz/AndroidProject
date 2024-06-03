@@ -30,14 +30,17 @@ class PredictionViewModel @Inject constructor(
         viewModelScope.launch {
             _uncomingMatchesFlow.emit(AsyncResult.Loading)
             runCatching(exceptionHandlerDelegate) {
-                upcomingMatchesUseCase.invoke().map { it-> mapper.mapDomainToPresentation(it) }
+                upcomingMatchesUseCase.invoke().filter {
+                    it.beginAt!=null
+                }.map { it-> mapper.mapDomainToPresentation(it) }
             }.onSuccess {
-                Log.e("Ayaz", "succes")
                 _uncomingMatchesFlow.emit(AsyncResult.Success(it))
             }.onFailure {
-                it.message?.let { it1 -> Log.e("Ayaz", it1) }
                 _uncomingMatchesFlow.emit(AsyncResult.Error(it))
             }
         }
+    }
+    fun openBottomPredict(model:MatchPresentationModel){
+        router.openBottomFromMain(model)
     }
 }

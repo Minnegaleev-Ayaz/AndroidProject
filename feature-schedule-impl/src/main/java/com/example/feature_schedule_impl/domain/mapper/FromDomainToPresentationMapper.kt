@@ -62,7 +62,6 @@ class FromDomainToPresentationMapper @Inject constructor(
             firstTeamScore = domainData.firstTeamResult,
             secondTeamScore = domainData.secondTeamResult,
         )
-        Log.e("Ayaz", past.matchTime.toString()+"- past")
         return past
     }
     fun mapStreamDomainToUi(runningStreamDomainModel: StreamDomainModel): RunningStreamUiModel{

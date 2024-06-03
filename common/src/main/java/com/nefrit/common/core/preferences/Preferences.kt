@@ -7,4 +7,6 @@ interface Preferences {
     fun getAutStatus(): Boolean
     fun saveUserId(id:String)
     fun getUserId():String
+    fun getWarningStatus():Boolean
+    fun setWarningStatus(flag:Boolean)
 }

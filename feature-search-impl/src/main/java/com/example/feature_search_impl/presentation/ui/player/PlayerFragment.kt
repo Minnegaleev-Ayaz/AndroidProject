@@ -28,7 +28,6 @@ class PlayerFragment:BaseFragment(R.layout.fragment_detailed_player) {
 
     override fun initViews() {
         val playerUiModel = arguments?.getParcelable<PlayerUiModel>(DETAILDED_PLAYER_KEY)
-        Log.e("Ayaz","playerUiModel - "+playerUiModel.toString())
         setModelView(playerUiModel)
     }
 
@@ -37,7 +36,9 @@ class PlayerFragment:BaseFragment(R.layout.fragment_detailed_player) {
             .playerComponentFactory().create(this).inject(this)
     }
     fun setModelView(player: PlayerUiModel?){
+
         with(viewBinding){
+            ageRl.visibility = View.GONE
             teamLayoutRl.visibility = View.GONE
             if (player!=null){
                 if (player.imageUrl!=null){
@@ -48,8 +49,10 @@ class PlayerFragment:BaseFragment(R.layout.fragment_detailed_player) {
                 Glide.with(requireContext()).load("https://flagcdn.com/64x48/"+player.nationality?.toLowerCase()+".png").into(nationlityIv)
                 playerNameTv.text = player.name
                 playerRoleTv.text = player.role
+
                 firstLastNameTv.text = getString(R.string.first_last_name,player.firstName.toString(),player.lastName.toString())
                 if (player.active!!){
+                    teamLayoutRl.visibility = View.VISIBLE
                     teamNameTv.setText(player.teamName)
                     if (player.teamImageUrl!=null){
                         Glide.with(requireContext()).load(player.teamImageUrl).into(teamImageIv)

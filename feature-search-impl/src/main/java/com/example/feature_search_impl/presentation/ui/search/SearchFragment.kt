@@ -71,7 +71,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                     viewModel.openTeam(model)
                 },
                 onPlayerClicked = {model ->
-                    Log.e("Ayaz","search" +model.toString())
                     viewModel.openPlayer(model)
                 },
                 resourceManager = resourceManager
@@ -92,7 +91,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                 when (result) {
                     is AsyncResult.Success -> {
                         rvQuerry?.updateItems(result.getDataOrNull()!!)
-                        Log.e("Ayaz", rvQuerry?.items.toString())
                         querriesRv.adapter = rvQuerry
                     }
 
@@ -128,7 +126,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             viewModel.searchFlow.collect { result ->
                 when (result) {
                     is AsyncResult.Success -> {
-                        Log.e("Ayaz","enter_querry")
                         querriesRv.visibility = View.GONE
                         responseRv.visibility = View.VISIBLE
                         result.getDataOrNull()?.let { rvTeamAndPlayers?.updateItems(it) }

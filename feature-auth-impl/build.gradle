@@ -24,6 +24,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':common')
     implementation project(':feature-auth-api')
+    implementation project(':firebase-api')
     implementation corutines_android
     implementation corutines_core
     implementation daggerDep
@@ -39,4 +40,5 @@ dependencies {
     androidTestImplementation 'junit:junit:4.12'
     implementation lifecycleScope
     implementation fragmentImpl
+    implementation firebaseDatabase
 }

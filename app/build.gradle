@@ -68,4 +68,5 @@ dependencies {
     implementation platform(firebaseBom)
     implementation firebaseAuthKtx
     implementation firebaseAuth
+    implementation firebaseDatabase
 }

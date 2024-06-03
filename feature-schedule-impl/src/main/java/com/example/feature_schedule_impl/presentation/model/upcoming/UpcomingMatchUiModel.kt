@@ -12,7 +12,7 @@ data class UpcomingMatchUiModel (
     val secondTeamName:String?,
     val firstTeamImage:String?,
     val secondTeamImage:String?,
-    val matchType: String?,
+    val matchType: Int?,
     val matchTime:String?,
     val leagueName:String?,
 ):Parcelable

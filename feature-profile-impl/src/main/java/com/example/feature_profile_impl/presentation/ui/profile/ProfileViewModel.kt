@@ -1,12 +1,11 @@
 package com.example.feature_profile_impl.presentation.ui.profile
 
-import android.provider.ContactsContract.Profile
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import androidx.viewbinding.ViewBinding
+import com.example.feature_profile_api.domain.repository.model.DataUser
 import com.example.feature_profile_impl.ProfileFeatureRouter
 import com.example.feature_profile_impl.domain.usecase.GetUserUseCase
-import com.google.firebase.auth.FirebaseUser
+
 import com.nefrit.common.base.BaseViewModel
 import com.nefrit.common.data.storage.PreferencesImpl
 import com.nefrit.common.utils.AsyncResult
@@ -21,23 +20,19 @@ class ProfileViewModel @Inject constructor(
     private val router:ProfileFeatureRouter
 ):BaseViewModel() {
     private val _userFlow =
-        MutableStateFlow<AsyncResult<FirebaseUser>?>(AsyncResult.Loading)
-    val userFlow: StateFlow<AsyncResult<FirebaseUser>?>
+        MutableStateFlow<AsyncResult<DataUser>?>(AsyncResult.Loading)
+    val userFlow: StateFlow<AsyncResult<DataUser>?>
         get() = _userFlow
     fun subscribe(){
         viewModelScope.launch {
             try{
-                val result = useCase.invoke()
-                _userFlow.emit(AsyncResult.Success(result!!))
-                Log.e("Ayaz","FirebaseUser - "+result.toString())
+                 useCase.invoke(_userFlow)
             }catch (e:Exception){
                 AsyncResult.Error(e)
-                Log.e("Ayaz",e.toString())
             }
         }
     }
     fun logOutFromAccount(){
-        Log.e("Ayaz",preferencesImpl.getUserId()+" - user id")
         preferencesImpl.saveAuthStatus(false)
         preferencesImpl.saveUserId("")
         router.openSignInFromProfile()

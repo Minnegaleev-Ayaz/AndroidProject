@@ -27,6 +27,9 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
     override fun initViews() {
         lifecycleScope.launch {
+            subscribeErrors(viewModel)
+        }
+        lifecycleScope.launch {
             subscribe(viewModel)
         }
     }
@@ -51,10 +54,8 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         viewModel.signInFlow.collect { result ->
             when (result) {
                 is AsyncResult.Success -> {
-                    Log.e("Ayaz", viewModel.preferencesImpl.getAutStatus().toString())
                     viewModel.saveUser(result.data.id)
                     viewModel.initializeUser()
-                    Log.e("Ayaz", viewModel.preferencesImpl.getAutStatus().toString())
                     viewModel.openPrediction()
                 }
 
@@ -66,6 +67,9 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
                 }
             }
         }
+
+    }
+    suspend fun subscribeErrors(viewModel: SignInViewModel){
         viewModel.errorFlow.collect{
             it?.message?.let { it1 -> showToast(it1) }
         }

@@ -48,9 +48,13 @@ class PlayerFromTeamFragment : BaseFragment(R.layout.fragment_detailed_player) {
                 } else {
                     playerImageIv.setImageResource(R.drawable.user_icon)
                 }
+
                 Glide.with(requireContext()).load("https://flagcdn.com/64x48/"+player.nationality?.toLowerCase()+".png").into(nationlityIv)
                 teamLayoutRl.visibility = View.GONE
-                ageTitleTv.text = player.age.toString()
+                unactiveTv.visibility = View.GONE
+                if (player.age!=null){
+                    ageTv.text = player.age.toString()
+                }
                 playerNameTv.text = player.name
                 playerRoleTv.text = player.role
                 firstLastNameTv.text = getString(

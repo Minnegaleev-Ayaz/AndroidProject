@@ -44,6 +44,7 @@ class ScheduleFragment : BaseFragment(R.layout.fragment_schedule) {
 
     override fun initViews() {
         val matchType = arguments?.getString(MATCH_TYPE)
+        viewBinding.titleTv.text = matchType+" matches"
         lifecycleScope.launch {
             subscribe(viewModel, matchType)
         }
@@ -121,6 +122,9 @@ class ScheduleFragment : BaseFragment(R.layout.fragment_schedule) {
                                 loadingPb.visibility = View.INVISIBLE
                                 rvMatch?.runningList =
                                     result.getDataOrNull() as MutableList<RunningMatchUiModel>
+                                if (result.getDataOrNull()!!.size==0){
+                                    emptyMatchesTv.visibility = View.VISIBLE
+                                }
                                 matchesRv.adapter = rvMatch
                             }
 

@@ -14,7 +14,6 @@ class ScheduleRepositoryImpl @Inject constructor(
 
     override suspend fun getMatches(matchType: String): List<MatchesDataModel> {
         val res = api.getMatches(matchType)
-        Log.e("Ayaz",res.toString()+" - upcoming")
         return res
     }
 }

@@ -3,6 +3,7 @@ package com.example.feature_predict_impl.presentation.ui.prediction.prediction
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
+import android.util.Pair
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -15,13 +16,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.feature_predict_api.di.PredictFeatureApi
 import com.example.feature_predict_impl.R
-import com.example.feature_predict_impl.databinding.AlertDialogStatisticBinding
-import com.example.feature_predict_impl.databinding.FragmentLastMatchesViewPagerBinding
 import com.example.feature_predict_impl.databinding.FragmentPredictionsBinding
 import com.example.feature_predict_impl.di.PredictionFeatureComponent
 import com.example.feature_predict_impl.presentation.adapter.PredictAdapter
-import com.example.feature_predict_impl.presentation.model.MatchPresentationModel
-import com.example.feature_predict_impl.presentation.ui.prediction.last_matches_statistic.StatisticFragment
+import com.example.feature_predict_impl.presentation.model.PredictPresentationModel
 import com.nefrit.common.base.BaseFragment
 import com.nefrit.common.di.FeatureUtils
 import com.nefrit.common.utils.AsyncResult
@@ -36,8 +34,6 @@ class PredictionFragment : BaseFragment(R.layout.fragment_predictions) {
     private val viewModel: PredictionViewModel by viewModels { factory.get() }
     private val viewBinding: FragmentPredictionsBinding by viewBinding(FragmentPredictionsBinding::bind)
     private var rvAdapter: PredictAdapter? = null
-    private val statsViewBinding: AlertDialogStatisticBinding by viewBinding(
-        AlertDialogStatisticBinding::bind)
 
     override fun initViews() {
         lifecycleScope.launch {
@@ -49,23 +45,12 @@ class PredictionFragment : BaseFragment(R.layout.fragment_predictions) {
             predictionsRv.layoutManager = layoutManager
             rvAdapter = PredictAdapter(
                 glide = Glide.with(this@PredictionFragment),
-                onStatisticClicked = { pos -> onStatisticCliked(pos) },
-                onScoreClickes = null,
+                onStatisticClicked = { it -> viewModel.openBottomPredict(it)},
             )
             predictionsRv.adapter = rvAdapter
             viewModel.initialize()
         }
     }
-
-    fun onStatisticCliked(pos: Int) {
-        var match = rvAdapter?.items?.get(pos)
-        val alertDialog = AlertDialog.Builder(requireContext()).setTitle("Last 5 Matches")
-            .setView(R.layout.alert_dialog_statistic).create()
-        alertDialog.show()
-        val viewPager = alertDialog.findViewById<ViewPager2>(R.id.stats_VP)
-        viewPager.adapter = createViewPagerAdapter(match!!)
-    }
-
 
     override fun inject() {
         FeatureUtils.getFeature<PredictionFeatureComponent>(this, PredictFeatureApi::class.java)
@@ -106,17 +91,6 @@ class PredictionFragment : BaseFragment(R.layout.fragment_predictions) {
         viewModel.errorFlow.collect {
             it?.message?.let { it1 -> showToast(it1) }
         }
-    }
-
-    fun createViewPagerAdapter(match: MatchPresentationModel): RecyclerView.Adapter<*>? {
-        val team_list = listOf(match.firstTeamId, match.secondTeamId)
-        val viewPager = object : FragmentStateAdapter(this) {
-            override fun getItemCount() = team_list.size
-
-            override fun createFragment(position: Int) =
-                StatisticFragment.newInstance(team_list[position])
-        }
-        return viewPager
     }
 
     companion object {

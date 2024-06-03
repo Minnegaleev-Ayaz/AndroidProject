@@ -1,5 +1,6 @@
 package com.example.feature_profile_impl.presentation.ui.profile
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -40,12 +41,19 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             }
         }
     }
+    suspend fun subscribeErrors(viewModel: ProfileViewModel){
+
+    }
     suspend fun subscribe(viewModel: ProfileViewModel) {
         viewModel.userFlow.collect { result ->
             with(viewBinding) {
                 when (result) {
-                    is AsyncResult.Success -> {}
+                    is AsyncResult.Success -> {
 
+                        val user = result.getDataOrNull()!!
+                        tvName.text = user.name
+                        tvEmail.text = user.mail
+                    }
                     is AsyncResult.Error -> {}
 
                     else -> {}

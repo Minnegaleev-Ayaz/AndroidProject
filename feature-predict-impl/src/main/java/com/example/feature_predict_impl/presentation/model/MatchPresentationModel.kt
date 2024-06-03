@@ -1,5 +1,9 @@
 package com.example.feature_predict_impl.presentation.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class MatchPresentationModel(
     val id :Int?,
     val firstTeamId:Int?,
@@ -11,4 +15,4 @@ data class MatchPresentationModel(
     val matchType: Int?,
     val matchTime:String?,
     val leagueName:String?
-)
+): Parcelable

@@ -49,7 +49,6 @@ class StreamsBottomSheetDialogFragment() :
             streamsRv.layoutManager = layoutManager
             rvAdapter = StreamsAdapter(glide = Glide.with(this@StreamsBottomSheetDialogFragment),)
             rvAdapter?.streamsList = runningMatchUiModel.streams as MutableList<RunningStreamUiModel>
-            Log.e("Ayaz",rvAdapter?.streamsList.toString())
             streamsRv.adapter = rvAdapter
         }
     }

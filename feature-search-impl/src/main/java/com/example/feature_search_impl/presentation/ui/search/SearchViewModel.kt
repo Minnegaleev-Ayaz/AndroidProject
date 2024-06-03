@@ -94,7 +94,6 @@ class SearchViewModel @Inject constructor(
                 resultList.add(Heading(R.string.teams))
                 resultList.addAll(teamList)
             }
-            Log.e("Ayaz", "viewModel working" + resultList.toString())
             _searchFlow.emit(AsyncResult.Success(resultList))
         }
     }

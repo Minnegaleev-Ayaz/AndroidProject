@@ -21,6 +21,7 @@
             </intent-filter>
 
         </activity>
+        <receiver android:name="com.nefrit.common.notification.NotificationReceiver"/>
 
     </application>
 

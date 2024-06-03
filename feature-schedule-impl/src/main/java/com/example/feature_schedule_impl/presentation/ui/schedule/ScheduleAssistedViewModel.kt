@@ -53,10 +53,8 @@ class ScheduleAssistedViewModel @AssistedInject constructor(
                         }
                             .map { it -> mapper.mapDomainToPresentationPast(it) }
                     }.onSuccess {
-                        Log.e("Ayaz", "past matches")
                         _pastMatchesFlow.emit(AsyncResult.Success(it))
                     }.onFailure {
-                        it.message?.let { it1 -> Log.e("Ayaz", it1)}
                             _pastMatchesFlow.emit(AsyncResult.Error(it))
                     }
                 }
@@ -69,10 +67,8 @@ class ScheduleAssistedViewModel @AssistedInject constructor(
                         }
                             .map { it -> mapper.mapDomainToPresentationRunning(it) }
                     }.onSuccess {
-                        Log.e("Ayaz", "running matches")
                         _runningMatchesFlow.emit(AsyncResult.Success(it))
                     }.onFailure {
-                        it.message?.let { it1 -> Log.e("Ayaz", it1) }
                         _runningMatchesFlow.emit(AsyncResult.Error(it))
                     }
                 }
@@ -85,10 +81,8 @@ class ScheduleAssistedViewModel @AssistedInject constructor(
                         }
                             .map { it -> mapper.mapDomainToPresentationUpcoming(it) }
                     }.onSuccess {
-                        Log.e("Ayaz", "upcoming matches")
                         _upcomingMatchesFlow.emit(AsyncResult.Success(it))
                     }.onFailure {
-                        it.message?.let { it1 -> Log.e("Ayaz", it1) }
                         _upcomingMatchesFlow.emit(AsyncResult.Error(it))
                     }
                 }

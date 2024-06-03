@@ -18,7 +18,10 @@ class PastHolder(
         with(viewBinding) {
             firstTeamNameTv.text = pastMatch.firstTeamName
             secondTeamNameTv.text = pastMatch.secondTeamName
-            matchTypeTv.text = pastMatch.matchType
+            if(pastMatch.matchType!!%2==0){
+                matchTypeTv.text = "bestOf"+(pastMatch.matchType+1).toString()
+            }
+            matchTypeTv.text = "bestOf"+pastMatch.matchType.toString()
             titleTv.text = pastMatch.matchTime?:"qweqwe"
             leagueTv.text = pastMatch.leagueName
             firstTeamScoreBtn.text = pastMatch.firstTeamScore.toString()

@@ -30,7 +30,7 @@ class SignInViewModel @Inject constructor(
             try {
                 val result = signInUseCase.invoke(SignInForm(email,password))
                 _signInFlow.emit(AsyncResult.Success(result))
-            }catch (e:Exception){
+            }catch (e:Throwable){
                 _signInFlow.emit(AsyncResult.Error(e))
             }
         }

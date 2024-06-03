@@ -10,8 +10,7 @@ import com.example.feature_predict_impl.presentation.model.MatchPresentationMode
 
 class PredictAdapter(
     private val glide: RequestManager,
-    private val onStatisticClicked: ((Int) -> Unit)? = null,
-    private val onScoreClickes: ((Int) -> Boolean)? = null
+    private val onStatisticClicked: ((MatchPresentationModel) -> Unit)? = null,
 ) : RecyclerView.Adapter<PredictHolder>() {
     var items:List<MatchPresentationModel> = emptyList()
         set(value) {
@@ -28,7 +27,6 @@ class PredictAdapter(
             ),
             glide = glide,
             onStatisticClicked = onStatisticClicked,
-            onScoreClickes = onScoreClickes
         )
     }
 

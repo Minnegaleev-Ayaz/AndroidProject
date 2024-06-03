@@ -43,6 +43,9 @@ class UpcomingBottomSheetDialogFragment() :
             notificationBtn.setOnClickListener {
                 viewModel.notificationButtonClick(requireContext(),requireActivity())
             }
+            predictBtn.setOnClickListener {
+                viewModel.predictButtonClick()
+            }
         }
     }
 

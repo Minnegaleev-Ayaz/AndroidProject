@@ -19,9 +19,9 @@ open class App : Application(), FeatureContainer {
 
     override fun onCreate() {
         super.onCreate()
-        FirebaseApp.initializeApp(this);
         appComponent = AppComponent.init(this)
         appComponent.inject(this)
+        FirebaseApp.initializeApp(this)
     }
 
     override fun <T> getFeature(key: Class<*>): T {

@@ -25,8 +25,8 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -35,14 +35,15 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="8dp"
-                android:src="@drawable/predictions_icon" />
+                android:layout_marginVertical="4dp"
+                android:src="@drawable/team_icon" />
 
             <TextView
                 android:id="@+id/first_team_name_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="team_2_name" />
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="" />
 
         </LinearLayout>
 
@@ -55,8 +56,8 @@
             android:textSize="30sp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -65,14 +66,15 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="8dp"
-                android:src="@drawable/predictions_icon" />
+                android:layout_marginVertical="4dp"
+                android:src="@drawable/team_icon" />
 
             <TextView
                 android:id="@+id/second_team_name_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="team_2_name" />
+                android:gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="" />
         </LinearLayout>
     </LinearLayout>
 
@@ -86,14 +88,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="bo5" />
+            android:text="" />
 
         <TextView
             android:id="@+id/league_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="ESL 19 finals"
+            android:text=""
             android:textAlignment="center"
             android:visibility="visible" />
 

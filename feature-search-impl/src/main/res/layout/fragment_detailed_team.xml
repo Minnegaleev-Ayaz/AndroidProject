@@ -24,7 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="S1mple"
                 android:layout_alignParentTop="true"
                 android:gravity="center"
                 android:textColor="@color/black"

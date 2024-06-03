@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.feature_schedule_impl.R
+import com.example.feature_schedule_impl.ScheduleFeatureRouter
 import com.example.feature_schedule_impl.presentation.model.upcoming.UpcomingMatchUiModel
 import com.nefrit.common.base.BaseViewModel
 import com.nefrit.common.core.resources.ResourceManager
@@ -32,11 +33,13 @@ class UpcomingBottomSheetDialogAssistedViewModel @AssistedInject constructor(
     private val notificationManagerWrapper: NotificationManagerWrapper,
     private val intent: Intent,
     private val resourceManager: ResourceManager,
+    private val router:ScheduleFeatureRouter,
     private val dateFormatter: DateFormatter,
     @Assisted(value = PARAM_KEY) private val model: UpcomingMatchUiModel
 ): BaseViewModel() {
-
+    private var count:Int=1;
     fun predictButtonClick(){
+        router.openPredFromUpcoming(model)
     }
     fun notificationButtonClick(context: Context, activity: FragmentActivity){
         if (ContextCompat.checkSelfPermission(
@@ -68,13 +71,15 @@ class UpcomingBottomSheetDialogAssistedViewModel @AssistedInject constructor(
                     .show()
             }
         } else{
-            notificationManagerWrapper.notify(NotificationManagerWrapper.SimpleNotification(
+            notificationManagerWrapper.setNotificationAlarm(NotificationManagerWrapper.SimpleNotification(
                 intent = intent,
+                id = model.id!!,
                 title = "Уведомление о матче",
-                text = "navi играют против faze"
+                text = model.firstTeamName+" play with "+model.secondTeamName
             ),
                 calculateDifference()
             )
+
         }
     }
     @AssistedFactory
@@ -101,7 +106,6 @@ class UpcomingBottomSheetDialogAssistedViewModel @AssistedInject constructor(
 
         val currentTime = LocalDateTime.now()
         val notificationtime = LocalDateTime.of(year,month,day,hour,minute)
-        Log.e("Ayaz",Duration.between(currentTime,notificationtime).toMinutes().toString()+"- notification")
         return Duration.between(currentTime,notificationtime).toMinutes()
     }
     companion object {

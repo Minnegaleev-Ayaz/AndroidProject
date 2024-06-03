@@ -17,7 +17,7 @@ class FromDataToDomainMapper @Inject constructor() {
             MatchesDomainModel(
                 beginAt = matchesDataModel.beginAt,
                 id = matchesDataModel.id,
-                matchType = matchesDataModel.matchType,
+                matchType = matchesDataModel.games?.size?:1,
                 modifiedAt = matchesDataModel.modifiedAt,
                 numberOfGames = matchesDataModel.numberOfGames,
                 firstTeam = mapOpponentDataToOpponentDomain(matchesDataModel.opponents[0].opponent),

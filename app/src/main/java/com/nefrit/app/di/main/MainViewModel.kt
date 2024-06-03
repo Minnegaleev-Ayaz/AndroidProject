@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val authStatus = preferencesImpl.getAutStatus()
-                Log.e("Ayaz",authStatus.toString())
+
                 _sharedPreferencesFlow.emit(AsyncResult.Success(authStatus))
             } catch (e: Exception) {
                 _sharedPreferencesFlow.emit(AsyncResult.Error(e))

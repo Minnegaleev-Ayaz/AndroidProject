@@ -24,7 +24,7 @@ class RunningHolder(
         with(viewBinding) {
             firstTeamNameTv.text = pastMatch.firstTeamName
             secondTeamNameTv.text = pastMatch.secondTeamName
-            matchTypeTv.text = pastMatch.matchType
+            matchTypeTv.text = "bestOf"+pastMatch.matchType.toString()
             titleTv.text = pastMatch.matchTime
             leagueTv.text = pastMatch.leagueName
             pastMatch.firstTeamImage?.let {

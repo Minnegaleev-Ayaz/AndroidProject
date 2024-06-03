@@ -6,4 +6,5 @@ import com.example.feature_schedule_impl.presentation.model.upcoming.UpcomingMat
 interface ScheduleFeatureRouter {
     fun openStreamsFromRunning(model:RunningMatchUiModel)
     fun openUpcomingBottom(model:UpcomingMatchUiModel)
+    fun openPredFromUpcoming(model:UpcomingMatchUiModel)
 }

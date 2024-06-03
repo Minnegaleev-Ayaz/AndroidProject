@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 android {
     namespace = "com.example.feature_predict_impl"
     compileSdkVersion = rootProject.compileSdkVersion
@@ -26,6 +27,7 @@ dependencies {
     implementation project(':common')
     implementation project(':feature-predict-api')
     implementation project(':panda-score-api')
+    implementation project(':firebase-api')
     implementation corutines_android
     implementation corutines_core
     implementation daggerDep
@@ -44,4 +46,7 @@ dependencies {
     implementation fragmentImpl
     implementation viewPager
     implementation materialDep
+    implementation firebaseDatabase
+    implementation materialDep
+    implementation firebaseAuth
 }

@@ -32,7 +32,6 @@ class SplashScreenFragment:BaseFragment(R.layout.fragment_splash_screen) {
     }
      suspend fun subscribe(viewModel: SplashScreenViewModel) {
         viewModel.prefFlow.collect { result ->
-            Log.e("Ayaz", result.toString()+" - splash")
             if (result == true){
                 viewModel.openPredictions()
                 viewModel.setAuthStatus(false)

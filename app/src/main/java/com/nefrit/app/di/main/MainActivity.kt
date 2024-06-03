@@ -61,7 +61,6 @@ class MainActivity @Inject constructor() : BaseActivity<MainViewModel>(){
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
             requestPermission()
         }
-        Log.e("Ayaz", LocalDateTime.now().toString()+" - time")
         navController = findNavController(R.id.nav_host_fragment)
         viewBinding.menuBnv?.setOnItemSelectedListener { item ->
             NavigationUI.onNavDestinationSelected(item, navController!!)
@@ -75,7 +74,6 @@ class MainActivity @Inject constructor() : BaseActivity<MainViewModel>(){
             viewModel.sharedPreferencesFlow.collect{result->
                 when(result){
                     is AsyncResult.Success ->{
-                        Log.e("Ayaz",result.toString()+" - activity")
                         if(result.getDataOrNull()!!){
                             menuBnv.visibility = View.VISIBLE
                         }else{

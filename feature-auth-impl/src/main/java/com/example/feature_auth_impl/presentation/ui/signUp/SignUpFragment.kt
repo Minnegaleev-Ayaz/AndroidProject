@@ -35,6 +35,9 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         lifecycleScope.launch{
             subscribe(viewModel)
         }
+        lifecycleScope.launch{
+            subscribeErrors(viewModel)
+        }
     }
 
 
@@ -72,6 +75,8 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
                 }
             }
         }
+    }
+    suspend fun subscribeErrors(viewModel: SignUpViewModel){
         viewModel.errorFlow.collect{
             it?.message?.let { it1 -> showToast(it1) }
         }

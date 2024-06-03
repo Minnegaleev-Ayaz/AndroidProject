@@ -17,7 +17,6 @@ class SplashScreenViewModel @Inject constructor(
     private val _prefFlow = MutableStateFlow<Boolean?>(null)
     val prefFlow :StateFlow<Boolean?> get() = _prefFlow
     fun checkAuthStatus(){
-        Log.e("Ayaz",preferencesImpl.getAutStatus().toString()+" also status")
         viewModelScope.launch {
             _prefFlow.emit(preferencesImpl.getAutStatus()?:false)
         }

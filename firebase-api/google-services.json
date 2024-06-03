@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "1042927130163",
-    "project_id": "cstracker-462d9",
-    "storage_bucket": "cstracker-462d9.appspot.com"
+    "project_number": "888575807431",
+    "firebase_url": "https://cs2tracker-c0a83-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cs2tracker-c0a83",
+    "storage_bucket": "cs2tracker-c0a83.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1042927130163:android:4da43618d95f441993f546",
+        "mobilesdk_app_id": "1:888575807431:android:f6de9538de285e4e5213e2",
         "android_client_info": {
           "package_name": "com.example.firebase_api"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBWWbBd9J1mqIDNIhNw-eu23pp-HkGG4fY"
+          "current_key": "AIzaSyBlyfeY5q-qepDASx-WCZAXv-7WBAc0sSg"
         }
       ],
       "services": {

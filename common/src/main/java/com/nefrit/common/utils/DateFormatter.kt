@@ -19,7 +19,6 @@ class DateFormatter {
 
     fun formatDate(date: String): String {
         val dates = LocalDateTime.parse(date,formatter).plusHours(3)
-        Log.e("Ayaz",dates.toString())
         return   dates.format(outputFormatter)
     }
 }
